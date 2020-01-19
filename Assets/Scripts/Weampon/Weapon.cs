@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyBase
+namespace Defence
 {
     public abstract class Weapon : MonoBehaviour
     {

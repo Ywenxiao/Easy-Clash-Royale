@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyBase
+namespace Defence
 {
     public class Elf : Enemy
     {

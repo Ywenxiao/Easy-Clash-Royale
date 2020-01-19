@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyBase
+namespace Defence
 {
-    public class IdleState : SoliderState
+    public class SoliderIdleState : SoliderState
     {
-        public IdleState(SoliderStateSystem system, SoliderId id)
-            : base(system, id)
+        public SoliderIdleState(SoliderStateSystem system, SoliderStateId stateId)
+            : base(system, stateId)
         {
 
         }

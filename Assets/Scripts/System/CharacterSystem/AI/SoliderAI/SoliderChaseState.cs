@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyBase {
+namespace Defence {
 
-    public class ChaseState : SoliderState
+    public class SoliderChaseState : SoliderState
     {
-        public ChaseState(SoliderStateSystem system, SoliderId id)
-            : base(system, id)
+        public SoliderChaseState(SoliderStateSystem system, SoliderStateId stateId)
+            : base(system, stateId)
         {
 
         }

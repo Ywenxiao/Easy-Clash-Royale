@@ -1,6 +1,6 @@
-﻿using MyBase;
+﻿using Defence;
 
-namespace MyBase
+namespace Defence
 {
     public class CharacterSystem:BaseGameSystem
     {

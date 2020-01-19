@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyBase
+namespace Defence
 {
     public class Solider : Character
     {
@@ -25,19 +25,19 @@ namespace MyBase
         private void MakeState()
         {
             system = new SoliderStateSystem();
-            SoliderState idleState = new IdleState(system, SoliderId.Idle);
-            SoliderState chaseState = new ChaseState(system, SoliderId.Chase);
-            SoliderState attackState = new AttackState(system, SoliderId.Attack);
+            SoliderState idleState = new SoliderIdleState(system, SoliderStateId.Idle);
+            SoliderState chaseState = new SoliderChaseState(system, SoliderStateId.Chase);
+            SoliderState attackState = new SoliderAttackState(system, SoliderStateId.Attack);
 
-            // idleState.AddTransition(SoliderTransition.Idle, SoliderId.Idle);
-            idleState.AddTransition(SoliderTransition.Chase, SoliderId.Chase);
+            // idleState.AddTransition(SoliderStateTransition.Idle, SoliderStateId.Idle);
+            idleState.AddTransition(SoliderStateTransition.Chase, SoliderStateId.Chase);
             
-            chaseState.AddTransition(SoliderTransition.Attack, SoliderId.Attack);
-            chaseState.AddTransition(SoliderTransition.Idle, SoliderId.Idle);
-            chaseState.AddTransition(SoliderTransition.Attack, SoliderId.Attack);
+            chaseState.AddTransition(SoliderStateTransition.Attack, SoliderStateId.Attack);
+            chaseState.AddTransition(SoliderStateTransition.Idle, SoliderStateId.Idle);
+            chaseState.AddTransition(SoliderStateTransition.Attack, SoliderStateId.Attack);
 
-            attackState.AddTransition(SoliderTransition.Idle, SoliderId.Idle);
-            attackState.AddTransition(SoliderTransition.Chase, SoliderId.Chase);
+            attackState.AddTransition(SoliderStateTransition.Idle, SoliderStateId.Idle);
+            attackState.AddTransition(SoliderStateTransition.Chase, SoliderStateId.Chase);
 
             system.AddState(idleState, chaseState, attackState);
         }

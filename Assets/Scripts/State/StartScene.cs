@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine.UI;
 using UnityEngine;
 
-namespace MyBase
+namespace Defence
 {
     public class StartScene : State
     {

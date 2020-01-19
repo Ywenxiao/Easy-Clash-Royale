@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyBase
+namespace Defence
 {
-    public class AttackState : SoliderState
+    public class SoliderAttackState : SoliderState
     {
-        public AttackState(SoliderStateSystem system, SoliderId id)
-            : base(system, id)
+        public SoliderAttackState(SoliderStateSystem system, SoliderStateId stateId)
+            : base(system, stateId)
         {
 
         }
-        
 
         public override void Atc()
         {

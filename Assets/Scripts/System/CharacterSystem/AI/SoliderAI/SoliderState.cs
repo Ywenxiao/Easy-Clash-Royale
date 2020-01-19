@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyBase
+namespace Defence
 {
-    public enum SoliderTransition
+    public enum SoliderStateTransition
     {
         NullTransition = 0,
         Idle = 1,
@@ -12,7 +12,7 @@ namespace MyBase
         Attack = 3
     }
 
-    public enum SoliderId
+    public enum SoliderStateId
     {
         NullId = 0,
         Attack = 1,
@@ -20,31 +20,33 @@ namespace MyBase
         Chase = 3
     }
 
-    public abstract class SoliderState 
-    {
-        private readonly Dictionary<SoliderTransition, SoliderId> _map = new Dictionary<SoliderTransition, SoliderId>();
 
-        public SoliderId Id { get; protected set; }
+    //角色状态
+    public abstract class SoliderState
+    {
+        private readonly Dictionary<SoliderStateTransition, SoliderStateId> _map = new Dictionary<SoliderStateTransition, SoliderStateId>();
+
+        public SoliderStateId StateId { get; protected set; }
 
         public SoliderStateSystem SoliderSystem { get; protected set; }
 
-        protected SoliderState(SoliderStateSystem system, SoliderId id)
+        protected SoliderState(SoliderStateSystem system, SoliderStateId stateId)
         {
             SoliderSystem = system;
-            Id = id;
+            StateId = stateId;
         }
 
 
-        public void AddTransition(SoliderTransition tran, SoliderId id)
+        public void AddTransition(SoliderStateTransition tran, SoliderStateId stateId)
         {
-            if (tran == SoliderTransition.NullTransition)
+            if (tran == SoliderStateTransition.NullTransition)
             {
                 throw new System.Exception($"不存在的条件{tran}");
             }
 
-            if (id == SoliderId.NullId)
+            if (stateId == SoliderStateId.NullId)
             {
-                throw new System.Exception($"空的ID{id}");
+                throw new System.Exception($"空的ID{stateId}");
             }
 
             if (_map.ContainsKey(tran))
@@ -52,12 +54,12 @@ namespace MyBase
                 throw new System.Exception("已经存在的状态");
             }
 
-            _map.Add(tran, id);
+            _map.Add(tran, stateId);
         }
 
-        public void DeleteTransition(SoliderTransition tran)
+        public void DeleteTransition(SoliderStateTransition tran)
         {
-            if (tran == SoliderTransition.NullTransition)
+            if (tran == SoliderStateTransition.NullTransition)
             {
                 throw new System.Exception("空的状态");
             }
@@ -71,14 +73,14 @@ namespace MyBase
             throw new System.Exception("不存在此状态");
         }
 
-        public SoliderId GetOutputState(SoliderTransition tran)
+        public SoliderStateId GetOutputState(SoliderStateTransition tran)
         {
             if (_map.Count > 0 && _map.ContainsKey(tran))
             {
                 return _map[tran];
             }
 
-            return SoliderId.NullId;
+            return SoliderStateId.NullId;
         }
 
         public virtual void DoBeforeEntering()
@@ -94,6 +96,7 @@ namespace MyBase
         public abstract void Atc();
     }
 
+    //状态管理
     public class SoliderStateSystem
     {
         private readonly List<SoliderState> _states = new List<SoliderState>();
@@ -124,7 +127,7 @@ namespace MyBase
 
             foreach (var s in _states)
             {
-                if (s.Id == state.Id)
+                if (s.StateId == state.StateId)
                 {
                     throw new System.Exception("已经存在的状态");
                 }
@@ -142,7 +145,7 @@ namespace MyBase
 
             foreach (var s in _states)
             {
-                if (s.Id == state.Id)
+                if (s.StateId == state.StateId)
                 {
                     _states.Remove(state);
                     return;
@@ -152,25 +155,25 @@ namespace MyBase
             throw new System.Exception("不存在的状态");
         }
 
-        public void PerformTransition(SoliderTransition tran)
+        public void PerformTransition(SoliderStateTransition tran)
         {
-            SoliderId tempId = CurrentState.GetOutputState(tran);
+            SoliderStateId tempStateId = CurrentState.GetOutputState(tran);
 
-            if (tempId == SoliderId.NullId)
+            if (tempStateId == SoliderStateId.NullId)
             {
                 throw new System.Exception("不存在的状态");
             }
 
             foreach (var s in _states)
             {
-                if (s.Id != tempId) continue;
+                if (s.StateId != tempStateId) continue;
                 CurrentState.DoBeforeLeaving();
                 CurrentState = s;
                 CurrentState.DoBeforeEntering();
                 return;
             }
+
             throw new System.Exception("无法转换到此状态状态");
         }
-
     }
 }

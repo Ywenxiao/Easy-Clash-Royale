@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyBase
+namespace Defence
 {
     //角色计算方法
    public interface IAttrStrategy

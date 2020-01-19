@@ -55,7 +55,7 @@ namespace FsmStateFsm
 
             if (stateId == StateId.NullStateId)
             {
-                throw new Exception("Null Id");
+                throw new Exception("Null EnemyId");
             }
 
             if (map.ContainsKey(transition))

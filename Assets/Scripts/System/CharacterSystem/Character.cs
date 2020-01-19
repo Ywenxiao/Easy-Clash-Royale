@@ -4,7 +4,7 @@ using System.Text;
 using UnityEngine.AI;
 using UnityEngine;
 
-namespace MyBase
+namespace Defence
 {
     public abstract class Character : MonoBehaviour
     {
