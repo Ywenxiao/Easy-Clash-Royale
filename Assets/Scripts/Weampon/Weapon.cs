@@ -4,6 +4,13 @@ using UnityEngine;
 
 namespace Defence
 {
+    public enum WeaponType
+    {
+        Gun,
+        Rifle,
+        Rocket
+    }
+
     public abstract class Weapon : MonoBehaviour
     {
         public int atk;            //攻击力
@@ -23,7 +30,7 @@ namespace Defence
 
         protected virtual void Start()
         {
-            // Init();
+            // Init();//TODO 武器组件初始化
         }
 
         private void Init()

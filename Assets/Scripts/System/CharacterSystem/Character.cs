@@ -43,6 +43,8 @@ namespace Defence
         protected AudioSource audioClip;
         protected NavMeshAgent navMeshAgent;
 
+        protected Weapon weapon=null;
+
         #endregion
 
         protected virtual void Start()
@@ -50,15 +52,21 @@ namespace Defence
             audioClip = GetComponent<AudioSource>();
             navMeshAgent = GetComponent<NavMeshAgent>();
         }
-        
 
-        protected virtual void FixedUpdate() { }
+        protected virtual void FixedUpdate()
+        {
+        }
+
         /// <summary>
         /// 角色攻击方法
         /// </summary>
         public virtual void Attack(Vector3 point)
         {
             Debug.Log("攻击");
+            if (weapon != null)
+            {
+                weapon.Fire(point);
+            }
         }
     }
 }
