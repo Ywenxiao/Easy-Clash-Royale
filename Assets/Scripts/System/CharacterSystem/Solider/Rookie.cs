@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Defence
 {
-    public class Rookie : Solider
+    public class Rookie : Soldier
     {
 
     }

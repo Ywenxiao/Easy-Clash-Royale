@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -9,19 +6,33 @@ namespace Defence
 {
     public class ResourcesLoad : IAssetLoadFactory
     {
+        private const string PathAudioClip = "Audios/";
+        private const string CharacterEnemy = "Charactes/Enemy/";
+        public const string CharacterSoldier = "Charactes/Soldier/";
+        public const string Sprite = "Sprites/";
+
         public AudioClip LoadAudioClip(string name)
         {
-            throw new NotImplementedException();
+            var clip = Resources.Load<AudioClip>(PathAudioClip + name);
+            return clip;
+        } 
+
+        public GameObject LoadCharacterEnemy(string name)
+        {
+            var prefab = Resources.Load<GameObject>(CharacterEnemy + name);
+            return prefab;
         }
 
-        public GameObject LoadCharacter(string name)
+        public GameObject LoadCharacterSoldier(string name)
         {
-            throw new NotImplementedException();
+            var prefab = Resources.Load<GameObject>(CharacterSoldier + name);
+            return prefab;
         }
 
         public Sprite LoadSprite(string name)
         {
-            throw new NotImplementedException();
+            var sprite = Resources.Load<Sprite>(Sprite + name);
+            return sprite;
         }
     }
 }

@@ -18,6 +18,9 @@ namespace Defence
             _enemyState.CurrentState.Atc();
         }
 
+        /// <summary>
+        /// 构造敌人状态机
+        /// </summary>
         private void Mask()
         {
             _enemyState = new EnemyStateSystem();

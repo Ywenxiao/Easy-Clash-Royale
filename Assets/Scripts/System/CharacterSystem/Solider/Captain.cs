@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Defence
 {
-    public class Captain : Solider
+    public class Captain : Soldier
     {
 
     }

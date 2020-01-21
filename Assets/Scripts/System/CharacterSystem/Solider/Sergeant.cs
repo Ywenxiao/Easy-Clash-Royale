@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Defence {
-    public class Sergeant : Solider
+    public class Sergeant : Soldier
     {
 
     }
