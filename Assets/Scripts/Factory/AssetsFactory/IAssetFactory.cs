@@ -6,9 +6,8 @@ namespace Defence
 {
     public interface IAssetLoadFactory
     {
-        GameObject LoadCharacterEnemy(string name);
-        GameObject LoadCharacterSoldier(string name);
+        GameObject LoadCharacter(string name);
         Sprite LoadSprite(string name);
         AudioClip LoadAudioClip(string name);
-    }
+          }
 }
