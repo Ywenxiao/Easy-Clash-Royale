@@ -18,16 +18,7 @@ namespace Defence
         {
             throw new NotImplementedException();
         }
-
-        // public GameObject LoadCharacterEnemy(string name)
-        // {
-        //     throw new NotImplementedException();
-        // }
-
-        // public GameObject LoadCharacterSoldier(string name)
-        // {
-        //     throw new NotImplementedException();
-        // }
+       
 
         public Sprite LoadSprite(string name)
         {
